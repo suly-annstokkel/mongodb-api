@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  height: 10vh;
+  background-color: lightslategrey;
+  color: white;
+  text-align: center;
+}
+header > h1 {
+  margin: 0;
+  line-height: 10vh;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  z-index: 10;
+  border-top: 1px solid lightslategrey;
+}
+
+button:focus,
+button:active {
+  outline: none;
+}
+
+footer > nav {
+  display: flex;
+  justify-content: center;
+}
+
+footer > nav > button {
+  height: 15vh;
+  flex: 1 1 0px;
+  border: none;
+}
+
+footer > nav > button.active {
+  background-color: lightslategrey;
+  color: white;
+}
+
+.fa {
+  display: block;
+  width: 100%;
+}
+.fa::before {
+  font-size: 3em;
+}
+
+article.person {
+  width: 96vw;
+  border: 1px dashed lightslategrey;
+  padding: 0.5em;
+  margin: 1em auto;
+}
+
+article.person > .name {
+  font-size: 2em;
+  font-weight: bold;
+  color: lightslategrey;
+  width: 50%;
+  float: left;
+}
+
+article.person > .operations {
+  float: right;
+}
+
+article.person > .operations > .fa::before {
+  font-size: initial;
+}
+
+article.person > .movies {
+  clear: both;
+}
+
+article.person > .movies > span {
+  display: inline-block;
+  padding: 0 1em;
+  margin: 0 1em;
+  background-color: #f99;
+  color: #600;
+}
