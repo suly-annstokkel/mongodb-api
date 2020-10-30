@@ -9,9 +9,14 @@ const init = () => {
       case "people":
         // do something
         loadPeopleData();
+        //loadMovieData();
         break;
       case "home":
+         // do something
+         
       case "me":
+        // do something
+        
       default:
         console.log(this.id);
     }

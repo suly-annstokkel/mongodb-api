@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 // Connect to the database
 mongoose
   .connect(
-    "mongodb+srv://dev:bootcamp@cluster0.cdtkq.azure.mongodb.net/mymovies?retryWrites=true&w=majority",
+    "mongodb+srv://dbSuly:mymongodb@cluster0.etfx4.azure.mongodb.net/dbSuly?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("DB Connected"))
