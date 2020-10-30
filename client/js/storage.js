@@ -32,7 +32,7 @@ const addNewPerson = () => {
     lastname: prompt("Enter lastname:"),
     age: +prompt("Enter age:"),
     hometown: prompt("Enter hometown:"),
-    street: prompt("Enter street:"),
+    //street: prompt("Enter street:"),
     gender: prompt("Enter gender:")
   };
 
@@ -68,7 +68,7 @@ const loadPeopleData = () => {
         //viewContent += `<div class="age">${person.age}</div>`;
         viewContent += `<input class="age" type="number" value="${person.age}" />`;
         viewContent += `<div class="hometown">${person.hometown || "hometown not filled"} </div>`;
-        viewContent += `<div class="street">${person.street || "street not filled"}</div>`;
+        //viewContent += `<div class="street">${person.street || "street not filled"}</div>`;
         viewContent += `<div class="gender">${person.gender || "gender not filled"}</div>`;
         viewContent += `<div class="movies">`;
 
