@@ -7,11 +7,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: whitesmoke;
+  /*background-image: url("/images/pexels-iconcom-479453.jpg");*/
 }
 
 header {
   height: 10vh;
-  background-color: lightslategrey;
+  background-color: royalblue;
   color: white;
   text-align: center;
 }
@@ -25,8 +27,9 @@ footer {
   bottom: 0;
   width: 100vw;
   z-index: 10;
-  border-top: 1px solid lightslategrey;
+  border-top: 1px solid royalblue;
 }
+
 
 button:focus,
 button:active {
@@ -42,10 +45,11 @@ footer > nav > button {
   height: 15vh;
   flex: 1 1 0px;
   border: none;
+  background-color: lightblue;
 }
 
 footer > nav > button.active {
-  background-color: lightslategrey;
+  background-color: royalblue;
   color: white;
 }
 
@@ -59,7 +63,7 @@ footer > nav > button.active {
 
 article.person {
   width: 96vw;
-  border: 1px dashed lightslategrey;
+  border: 1px dashed royalblue;
   padding: 0.5em;
   margin: 1em auto;
 }
@@ -67,7 +71,7 @@ article.person {
 article.person > .name {
   font-size: 2em;
   font-weight: bold;
-  color: lightslategrey;
+  color: black;
   width: 50%;
   float: left;
 }

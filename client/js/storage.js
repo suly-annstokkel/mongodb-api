@@ -11,6 +11,19 @@ const updateAge = (e) => {
   updatedPersonProperties(id, updatedPerson);
 }
 
+const updateName = (e) => {
+  console.log(e.target);
+  let newName = e.target.value;
+  console.log(newName);
+  let id = e.target.parentNode.id;
+  console.log(id);
+
+  var updatedName = {
+    "name":newName
+  }
+  updatedPersonProperties(id, updatedName);
+}
+
 const updatedPersonProperties = (id, updatedPerson) => {
   fetch(`/api/people/${id}`, {
     method: "PUT",
@@ -63,13 +76,13 @@ const loadPeopleData = () => {
       for (person of people) {
         // ugly way of creating DOM content (do better!)
         viewContent += `<article class="person" id="${person._id}">`;
-        viewContent += `<div class="name">${person.name || "name not filled"} ${person.lastname || "lastname not filled"}</div>`;   //prompt("Update name:", "Klaas")
+        viewContent += `<input class="name" type="text" value="${person.name || ""} ${person.lastname || ""}" />`;   //prompt("Update name:", "Klaas")
         viewContent += `<div class="operations"><button class="btn-crud fa fa-trash delete"></button></div>`;
         //viewContent += `<div class="age">${person.age}</div>`;
         viewContent += `<input class="age" type="number" value="${person.age}" />`;
-        viewContent += `<div class="hometown">${person.hometown || "hometown not filled"} </div>`;
+        viewContent += `<div class="hometown">${person.hometown || ""} </div>`;
         //viewContent += `<div class="street">${person.street || "street not filled"}</div>`;
-        viewContent += `<div class="gender">${person.gender || "gender not filled"}</div>`;
+        viewContent += `<div class="gender">${person.gender || ""}</div>`;
         viewContent += `<div class="movies">`;
 
       //      list movies this person likes
@@ -124,6 +137,13 @@ const loadPeopleData = () => {
       for (ageElement of ageElementCollection) {
         console.log(ageElement);
         ageElement.addEventListener("change", updateAge);
+      }
+
+      const nameElementCollection = document.getElementsByClassName("name");
+
+      for (nameElement of nameElementCollection) {
+        console.log(nameElement);
+        nameElement.addEventListener("change", updateName);
       }
     });
 };
