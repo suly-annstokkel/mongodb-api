@@ -72,7 +72,7 @@ const loadPeopleData = () => {
         viewContent += `<div class="gender">${person.gender || "gender not filled"}</div>`;
         viewContent += `<div class="movies">`;
 
-      //   // list movies this person likes
+      //      list movies this person likes
       //   for (movie of person.movies) {
       //     viewContent += `</article class="movie" id="${movie._id}">`;
       //     viewContent += `<span class="movie">${movie.title || "movietitle not filled"} (${movie.year || "movieyear not filled"})</span>`;
