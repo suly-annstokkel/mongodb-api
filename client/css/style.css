@@ -1,3 +1,8 @@
+:root{
+  --navbar-height: 115px;
+  --tabs-height: 115px;
+} 
+
 * {
   box-sizing: border-box;
 }
@@ -12,7 +17,7 @@ body {
 }
 
 header {
-  height: 10vh;
+  height: var(--navbar-height);
   background-color: royalblue;
   color: white;
   text-align: center;
@@ -28,6 +33,14 @@ footer {
   width: 100vw;
   z-index: 10;
   border-top: 1px solid royalblue;
+  height: var(--tabs-height);
+}
+
+main{
+  height: calc(100vh - var(--navbar-height) - var(--tabs-height));
+  grid-template-rows: repeat(1, 100vw);
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 }
 
 
@@ -94,4 +107,19 @@ article.person > .movies > span {
   margin: 0 1em;
   background-color: #f99;
   color: #600;
+}
+
+
+.name, .hometown, .age{
+  background-color: white;
+}
+
+.person{
+  background-color: lightgray;
+}
+
+.btnAdd{
+  background-color: royalblue;
+  color: white;
+  margin: 20px 20px;
 }

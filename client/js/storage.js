@@ -24,6 +24,19 @@ const updateName = (e) => {
   updatedPersonProperties(id, updatedName);
 }
 
+const updateHometown = (e) => {
+  console.log(e.target);
+  let newHometown = e.target.value;
+  console.log(newHometown);
+  let id = e.target.parentNode.id;
+  console.log(id);
+
+  var updatedHometown = {
+    "hometown":newHometown
+  }
+  updatedPersonProperties(id, updatedHometown);
+}
+
 const updatedPersonProperties = (id, updatedPerson) => {
   fetch(`/api/people/${id}`, {
     method: "PUT",
@@ -72,18 +85,19 @@ const loadPeopleData = () => {
       const viewElement = document.getElementById("content");
       let viewContent = "";
       //const viewElement= document.getElementById("addPerson");
-      viewContent += '<button onclick="addNewPerson()">Add person</button>';
-      for (person of people) {
-        // ugly way of creating DOM content (do better!)
-        viewContent += `<article class="person" id="${person._id}">`;
-        viewContent += `<input class="name" type="text" value="${person.name || ""} ${person.lastname || ""}" />`;   //prompt("Update name:", "Klaas")
-        viewContent += `<div class="operations"><button class="btn-crud fa fa-trash delete"></button></div>`;
-        //viewContent += `<div class="age">${person.age}</div>`;
-        viewContent += `<input class="age" type="number" value="${person.age}" />`;
-        viewContent += `<div class="hometown">${person.hometown || ""} </div>`;
-        //viewContent += `<div class="street">${person.street || "street not filled"}</div>`;
-        viewContent += `<div class="gender">${person.gender || ""}</div>`;
-        viewContent += `<div class="movies">`;
+         viewContent += '<button onclick="addNewPerson()" class="btnAdd">Add person</button>'; 
+         for (person of people) {
+            // ugly way of creating DOM content (do better!)
+            viewContent += `<article class="person" id="${person._id}">`;
+            viewContent += `<input class="name" type="text" value="${person.name || ""} ${person.lastname || ""}" />`;   //prompt("Update name:", "Klaas")
+            viewContent += `<div class="operations"><button class="btn-crud fa fa-check submit"></button></div>`;
+            viewContent += `<div class="operations"><button class="btn-crud fa fa-trash delete"></button></div>`;
+            //viewContent += `<div class="age">${person.age}</div>`;
+            viewContent += `<input class="age" type="number" value="${person.age}" />`;
+            viewContent += `<input class="hometown" type="text" value="${person.hometown || ""}" />`;
+            //viewContent += `<div class="street">${person.street || "street not filled"}</div>`;
+            viewContent += `<div class="gender">${person.gender || ""}</div>`;
+            viewContent += `<div class="movies">`;
 
       //      list movies this person likes
       //   for (movie of person.movies) {
@@ -124,6 +138,28 @@ const loadPeopleData = () => {
           });
       }
 
+
+      
+      // Handle CRUD buttons
+      function buttonCRUDHandler(e) {
+        console.log(e, this);
+
+        const targetArticle = e.path.filter(
+          (el) => el.tagName === "ARTICLE"
+        )[0];
+
+        console.log(targetArticle.id);
+
+        fetch(`/api/people/${targetArticle.id}`, { method: "PUT" })
+          .then((response) => response.json())
+          .then((person) => {
+            alert("Person updated")
+            console.log(`${person.name} just got updated`);
+            //loadPeopleData() of
+            targetArticle.parentNode.removeChild(targetArticle);
+          });
+      }
+
       const buttonCRUDCollection = document.getElementsByClassName("btn-crud");
 
       // iterate over the buttons
@@ -144,6 +180,13 @@ const loadPeopleData = () => {
       for (nameElement of nameElementCollection) {
         console.log(nameElement);
         nameElement.addEventListener("change", updateName);
+      }
+
+      const hometownElementCollection = document.getElementsByClassName("hometown");
+
+      for (hometownElement of hometownElementCollection) {
+        console.log(hometownElement);
+        hometownElement.addEventListener("change", updateHometown);
       }
     });
 };
